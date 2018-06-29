@@ -1,81 +1,324 @@
 \documentclass[11pt, a4paper]{article}
-\usepackage{amsmath, color, tikz, xstring}
-\usetikzlibrary{calc}
+\usepackage{amsmath, color, tikz}
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=10mm,
+	top=10mm,
+}
+
+\allowdisplaybreaks
 
 % https://tex.stackexchange.com/questions/49746/a-table-with-square-cells
 
-\def\NumOfColumns{5}%
-\def\Sequence{1/A/1/15, 2/B/16/30, 3/C/31/45, 4/D/46/60, 5/E/61/71}%
-
-\newcommand{\Size}{1cm}
-\tikzset{Square/.style={
-		inner sep=0pt,
-		text width=\Size,
-		minimum size=\Size,
-		draw=black,
-		align=center,
-	}
-}
+%\usepackage{xstring}
+%\usetikzlibrary{calc}
+%\def\NumOfColumns{5}%
+%\def\Sequence{1/A/1/15, 2/B/16/30, 3/C/31/45, 4/D/46/60, 5/E/61/71}%
+%
+%\newcommand{\Size}{1cm}
+%\tikzset{Square/.style={
+%		inner sep=0pt,
+%		text width=\Size,
+%		minimum size=\Size,
+%		draw=black,
+%		align=center,
+%	}
+%}
 
 \begin{document}
 	
-%	\setlength{\tabcolsep}{18pt} - width of the column
+	%	\setlength{\tabcolsep}{18pt} - width of the column
 	\setlength{\arrayrulewidth}{1pt} % thick table border
 	
-	\section{Hello}
-	\subsection{Little Text}
-	\begin{multline}
-		\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
-		x_{i,j,k} = (x_{1,1,{\color{red} 1}} \vee \dots \vee x_{1,1,{\color{red} n}}) 
-			\wedge (x_{1,2,{\color{red} 1}} \vee \dots \vee x_{1,2,{\color{red} n}})
-			\wedge \dots \\
-			\wedge (x_{1,n-1,{\color{red} 1}} \vee \dots \vee x_{1,n-1,{\color{red} n}})
-			\wedge (x_{1,n,{\color{red} 1}} \vee \dots \vee x_{1,n,{\color{red} n}})
-	\end{multline}
-
+	\section{Projekt Überschrift}
+	\subsection{Keine Zelle ist leer: es steht eine Ziffer 1-n drin}
 	\begin{align*}
-		\int_S f \mathrm{d} A &= \sum_{i=1}^n \int_{V_i} f \mathrm{d} A \\
-		&- \sum_{i \neq j} \int_{V_i \cap V_j} f \mathrm{d} A \\
-		&+ \sum_{i,j,k} \int_{V_i \cap V_j \cap V_k} f \mathrm{d} A\\
-		&- \dots
+	\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
+	x_{i,j,k} = (x_{1,1,{\color{red} 1}} \vee \dots \vee x_{1,1,{\color{red} n}}) 
+	\wedge (x_{1,2,{\color{red} 1}} \vee \dots \vee x_{1,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{1,n-1,{\color{red} 1}} \vee \dots \vee x_{1,n-1,{\color{red} n}})
+	\wedge (x_{1,n,{\color{red} 1}} \vee \dots \vee x_{1,n,{\color{red} n}}) \\
+	% … Ende der ersten Zeile
+	\wedge (x_{2,1,{\color{red} 1}} \vee \dots \vee x_{2,1,{\color{red} n}})
+	\wedge (x_{2,2,{\color{red} 1}} \vee \dots \vee x_{2,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{2,n-1,{\color{red} 1}} \vee \dots \vee x_{2,n-1,{\color{red} n}})
+	\wedge (x_{2,n,{\color{red} 1}} \vee \dots \vee x_{2,n,{\color{red} n}})
+	% … Ende der zweiten Zeile
+	\wedge \dots \\
+	\wedge (x_{n-1,1,{\color{red} 1}} \vee \dots \vee x_{n-1,1,{\color{red} n}}) 
+	\wedge (x_{n-1,2,{\color{red} 1}} \vee \dots \vee x_{n-1,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{n-1,n-1,{\color{red} 1}} \vee \dots \vee x_{n-1,n-1,{\color{red} n}})
+	\wedge (x_{n-1,n,{\color{red} 1}} \vee \dots \vee x_{n-1,n,{\color{red} n}}) \\
+	% … Ende der vorletzten Zeile
+	\wedge (x_{n,1,{\color{red} 1}} \vee \dots \vee x_{n,1,{\color{red} n}}) 
+	\wedge (x_{n,2,{\color{red} 1}} \vee \dots \vee x_{n,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{n,n-1,{\color{red} 1}} \vee \dots \vee x_{n,n-1,{\color{red} n}})
+	\wedge (x_{n,n,{\color{red} 1}} \vee \dots \vee x_{n,n,{\color{red} n}})
+	% … Ende der letzten Zeile
 	\end{align*}
-
-	\begin{tabular}{c|c|c|c}
-		A & B & C & C \\
-		\hline
-		A & B & C & C \\
-		\hline
-		A & B & C & C \\
-		\hline
-		A & B & C & C \\
-	\end{tabular}
-
-	\bigskip
-
-
-	\let\mc=\multicolumn
 	
-	\begin{tabular}{c|c|c|c}
-		\mc{1}{c}{1} & \mc{1}{c}{2} & \mc{1}{c}{3} & \mc{1}{c}{4} \\ \cline{2-3}
-		5 & 2 & 4 & 3 \\ \cline{2-3}
-		4 & 3 & 5 & 2 \\ \cline{2-3}
-		\mc{1}{c}{1} & \mc{1}{c}{2} & \mc{1}{c}{3} & \mc{1}{c}{4} \\
-	\end{tabular}
-
-	\begin{tikzpicture}[draw=black, ultra thick, x=\Size,y=\Size]
-		\foreach \row/\rowLetter/\MinNumber/\MaxNumber in \Sequence{%
-			\foreach \col/\colLetter/\MinNumber/\MaxNumber in \Sequence {%
-				\pgfmathtruncatemacro{\value}{\col+\NumOfColumns*(\row-1)}
-				\def\NodeText{\pgfmathparse{random(\MinNumber,\MaxNumber)}\pgfmathresult}
-				\pgfmathsetmacro{\ColRowProduce}{\col*\row}
-				\IfEq{\ColRowProduce}{9}{% If is center square
-					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\small Free Space};
-				}{
-					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\text \NodeText};
-				}
-			}
-		}
-	\end{tikzpicture}
-
-
+	\subsection{In jeder Zelle steht höchstens eine Ziffer 1-n}
+	\begin{align*}
+	\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigwedge_{\atop k=1}^{n-1} \bigwedge_{\atop l=k+1}^n
+	(\neg x_{i,j,k} \vee \neg x_{i,j,l}) = 
+	(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n}})
+	\wedge \dots \\
+	% … Ende der ersten Zelle
+	\wedge
+	(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n-1}})
+	\wedge
+	(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n}})
+	% … Ende der zweiten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n}})
+	% … Ende der vorletzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n-1}})
+	\wedge
+	(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n}})
+	% … Ende der letzten Zelle 
+	% … Ende der ersten Zeile
+	\\
+	\wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n}})
+	% … Ende der zweiten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n-1}})
+	\wedge
+	(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n}})
+	% … Ende der vorletzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n}})
+	% … Ende der letzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n-1}})
+	\wedge
+	(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n}})
+	% … Ende der letzten Zelle 
+	% … Ende der zweiten Zeile
+	\\
+	\wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n}})
+	% … Ende der zweiten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n}})
+	% … Ende der vorletzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n}})
+	% … Ende der letzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n}})
+	% … Ende der letzten Zelle 
+	% … Ende der zweiten Zeile
+	\\
+	\wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n}})
+	% … Ende der zweiten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n}})
+	% … Ende der vorletzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n}})
+	% … Ende der letzten Zelle
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 2}}) 
+	\wedge 
+	(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 3}})
+	\wedge \dots \\
+	\wedge
+	(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n-1}})
+	\wedge
+	(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n}})
+	\end{align*}
+	
+	\subsection{Jede Ziffer 1-n kommt mindestens einmal vor}
+	\begin{align*}
+	\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
+	x_{i,j,k} = (x_{{\color{red} 1},1,1} \vee \dots \vee x_{{\color{red} n},1,1})
+	\\
+	\\
+	\wedge (x_{1,2,{\color{red} 1}} \vee \dots \vee x_{1,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{1,n-1,{\color{red} 1}} \vee \dots \vee x_{1,n-1,{\color{red} n}})
+	\wedge (x_{1,n,{\color{red} 1}} \vee \dots \vee x_{1,n,{\color{red} n}}) \\
+	% … Ende der ersten Zeile
+	\wedge (x_{2,1,{\color{red} 1}} \vee \dots \vee x_{2,1,{\color{red} n}})
+	\wedge (x_{2,2,{\color{red} 1}} \vee \dots \vee x_{2,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{2,n-1,{\color{red} 1}} \vee \dots \vee x_{2,n-1,{\color{red} n}})
+	\wedge (x_{2,n,{\color{red} 1}} \vee \dots \vee x_{2,n,{\color{red} n}})
+	% … Ende der zweiten Zeile
+	\wedge \dots \\
+	\wedge (x_{n-1,1,{\color{red} 1}} \vee \dots \vee x_{n-1,1,{\color{red} n}}) 
+	\wedge (x_{n-1,2,{\color{red} 1}} \vee \dots \vee x_{n-1,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{n-1,n-1,{\color{red} 1}} \vee \dots \vee x_{n-1,n-1,{\color{red} n}})
+	\wedge (x_{n-1,n,{\color{red} 1}} \vee \dots \vee x_{n-1,n,{\color{red} n}}) \\
+	% … Ende der vorletzten Zeile
+	\wedge (x_{n,1,{\color{red} 1}} \vee \dots \vee x_{n,1,{\color{red} n}}) 
+	\wedge (x_{n,2,{\color{red} 1}} \vee \dots \vee x_{n,2,{\color{red} n}})
+	\wedge \dots \\
+	\wedge (x_{n,n-1,{\color{red} 1}} \vee \dots \vee x_{n,n-1,{\color{red} n}})
+	\wedge (x_{n,n,{\color{red} 1}} \vee \dots \vee x_{n,n,{\color{red} n}})
+	% … Ende der letzten Zeile
+	\end{align*}
+	
+	
+%	\begin{align*}
+%	\int_S f \mathrm{d} A &= \sum_{i=1}^n \int_{V_i} f \mathrm{d} A \\
+%	&- \sum_{i \neq j} \int_{V_i \cap V_j} f \mathrm{d} A \\
+%	&+ \sum_{i,j,k} \int_{V_i \cap V_j \cap V_k} f \mathrm{d} A\\
+%	&- \dots
+%	\end{align*}
+%	
+%	\begin{tabular}{c|c|c|c}
+%		A & B & C & C \\
+%		\hline
+%		A & B & C & C \\
+%		\hline
+%		A & B & C & C \\
+%		\hline
+%		A & B & C & C \\
+%	\end{tabular}
+%	
+%	\bigskip
+%	
+%	
+%	\let\mc=\multicolumn
+	
+%	\begin{tabular}{c|c|c|c}
+%		\mc{1}{c}{1} & \mc{1}{c}{2} & \mc{1}{c}{3} & \mc{1}{c}{4} \\ \cline{2-3}
+%		5 & 2 & 4 & 3 \\ \cline{2-3}
+%		4 & 3 & 5 & 2 \\ \cline{2-3}
+%		\mc{1}{c}{1} & \mc{1}{c}{2} & \mc{1}{c}{3} & \mc{1}{c}{4} \\
+%	\end{tabular}
+	
+	%	\begin{tikzpicture}[draw=black, ultra thick, x=\Size,y=\Size]
+	%		\foreach \row/\rowLetter/\MinNumber/\MaxNumber in \Sequence{%
+	%			\foreach \col/\colLetter/\MinNumber/\MaxNumber in \Sequence {%
+	%				\pgfmathtruncatemacro{\value}{\col+\NumOfColumns*(\row-1)}
+	%				\def\NodeText{\pgfmathparse{random(\MinNumber,\MaxNumber)}\pgfmathresult}
+	%				\pgfmathsetmacro{\ColRowProduce}{\col*\row}
+	%				\IfEq{\ColRowProduce}{9}{% If is center square
+	%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\small Free Space};
+	%				}{
+	%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\text \NodeText};
+	%				}
+	%			}
+	%		}
+	%	\end{tikzpicture}
+	
+	
 \end{document}
