@@ -15,53 +15,50 @@
 
 % https://tex.stackexchange.com/questions/49746/a-table-with-square-cells
 
-%\usepackage{xstring}
-%\usetikzlibrary{calc}
-%\def\NumOfColumns{5}%
-%\def\Sequence{1/A/1/15, 2/B/16/30, 3/C/31/45, 4/D/46/60, 5/E/61/71}%
+%	\usepackage{xstring}
+%	\usetikzlibrary{calc}
+%	\def\NumOfColumns{5}%
+%	\def\Sequence{1/A/1/15, 2/B/16/30, 3/C/31/45, 4/D/46/60, 5/E/61/71}%
 %
-%\newcommand{\Size}{1cm}
-%\tikzset{Square/.style={
-%		inner sep=0pt,
-%		text width=\Size,
-%		minimum size=\Size,
-%		draw=black,
-%		align=center,
+%	\newcommand{\Size}{1cm}
+%	\tikzset{Square/.style={
+%			inner sep=0pt,
+%			text width=\Size,
+%			minimum size=\Size,
+%			draw=black,
+%			align=center,
+%		}
 %	}
-%}
 
 \begin{document}
 	
-	%	\setlength{\tabcolsep}{18pt} - width of the column
-	\setlength{\arrayrulewidth}{1pt} % thick table border
+%	\setlength{\tabcolsep}{18pt} - width of the column
+% \setlength{\arrayrulewidth}{1pt} % thick table border
 	
 	\section{Modellierungsprojekt – Sichtachsen}
 	\subsection{In jedem Feld des nxn Stadtplans steht eine Zahl von 1 bis n, d.h es gibt kein leeres Feld.}
 	\begin{align*}
 		\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
-		x_{i,j,{\color{red}k}} = (x_{1,1,{\color{red} 1}} \vee \dots \vee x_{1,1,{\color{red} n}}) 
-		\wedge (x_{1,2,{\color{red} 1}} \vee \dots \vee x_{1,2,{\color{red} n}})
-		\wedge \dots \\
-		\wedge (x_{1,n-1,{\color{red} 1}} \vee \dots \vee x_{1,n-1,{\color{red} n}})
-		\wedge (x_{1,n,{\color{red} 1}} \vee \dots \vee x_{1,n,{\color{red} n}}) \\
+		x_{i,j,{\color{red} k}} &= (x_{1,1,{\color{red} 1}} \vee \dots \vee x_{1,1,{\color{red} n}}) \wedge (x_{1,2,{\color{red} 1}} \vee \dots \vee x_{1,2,{\color{red} n}}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{1,n-1,{\color{red} 1}} \vee \dots \vee x_{1,n-1,{\color{red} n}}) \wedge (x_{1,n,{\color{red} 1}} \vee \dots \vee x_{1,n,{\color{red} n}}) \\
 		% … Ende der ersten Zeile
-		\wedge (x_{2,1,{\color{red} 1}} \vee \dots \vee x_{2,1,{\color{red} n}})
-		\wedge (x_{2,2,{\color{red} 1}} \vee \dots \vee x_{2,2,{\color{red} n}})
-		\wedge \dots \\
-		\wedge (x_{2,n-1,{\color{red} 1}} \vee \dots \vee x_{2,n-1,{\color{red} n}})
-		\wedge (x_{2,n,{\color{red} 1}} \vee \dots \vee x_{2,n,{\color{red} n}})
+		& \wedge (x_{2,1,{\color{red} 1}} \vee \dots \vee x_{2,1,{\color{red} n}})
+		\wedge (x_{2,2,{\color{red} 1}} \vee \dots \vee x_{2,2,{\color{red} n}}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{2,n-1,{\color{red} 1}} \vee \dots \vee x_{2,n-1,{\color{red} n}})
+		\wedge (x_{2,n,{\color{red} 1}} \vee \dots \vee x_{2,n,{\color{red} n}}) \wedge 
+		\\ & \dots \\
 		% … Ende der zweiten Zeile
-		\wedge \dots \\
-		\wedge (x_{n-1,1,{\color{red} 1}} \vee \dots \vee x_{n-1,1,{\color{red} n}}) 
-		\wedge (x_{n-1,2,{\color{red} 1}} \vee \dots \vee x_{n-1,2,{\color{red} n}})
-		\wedge \dots \\
-		\wedge (x_{n-1,n-1,{\color{red} 1}} \vee \dots \vee x_{n-1,n-1,{\color{red} n}})
+		& \wedge (x_{n-1,1,{\color{red} 1}} \vee \dots \vee x_{n-1,1,{\color{red} n}}) 
+		\wedge (x_{n-1,2,{\color{red} 1}} \vee \dots \vee x_{n-1,2,{\color{red} n}}) \wedge \\ & \dots \\
+		& \wedge (x_{n-1,n-1,{\color{red} 1}} \vee \dots \vee x_{n-1,n-1,{\color{red} n}})
 		\wedge (x_{n-1,n,{\color{red} 1}} \vee \dots \vee x_{n-1,n,{\color{red} n}}) \\
 		% … Ende der vorletzten Zeile
-		\wedge (x_{n,1,{\color{red} 1}} \vee \dots \vee x_{n,1,{\color{red} n}}) 
-		\wedge (x_{n,2,{\color{red} 1}} \vee \dots \vee x_{n,2,{\color{red} n}})
-		\wedge \dots \\
-		\wedge (x_{n,n-1,{\color{red} 1}} \vee \dots \vee x_{n,n-1,{\color{red} n}})
+		& \wedge (x_{n,1,{\color{red} 1}} \vee \dots \vee x_{n,1,{\color{red} n}}) 
+		\wedge (x_{n,2,{\color{red} 1}} \vee \dots \vee x_{n,2,{\color{red} n}}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{n,n-1,{\color{red} 1}} \vee \dots \vee x_{n,n-1,{\color{red} n}})
 		\wedge (x_{n,n,{\color{red} 1}} \vee \dots \vee x_{n,n,{\color{red} n}})
 		% … Ende der letzten Zeile
 	\end{align*}
@@ -70,240 +67,135 @@
 	\subsection{In jedem Feld darf höchstens eine Zahl von 1 bis n stehen.}
 	\begin{align*}
 		\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigwedge_{\atop k=1}^{n-1} \bigwedge_{\atop l=k+1}^n
-		(\neg x_{i,j,{\color{red}k}} \vee \neg x_{i,j,{\color{red}l}}) = 
-		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n}})
-		\wedge \dots \\
+		(\neg x_{i,j,{\color{red}k}} \vee \neg x_{i,j,{\color{red}l}}) &= 
+		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 2}}) \wedge (\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n-1}}) \wedge
+		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} n}}) \wedge 
+		\\ & \dots \\
 		% … Ende der ersten Zelle
-		\wedge
-		(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n-1}})
-		\wedge
-		(\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n}})
-		% … Ende der zweiten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n}})
+		& \wedge (\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 2}}) \wedge (\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n-1}}) \wedge (\neg x_{1,2,{\color{red} 1}} \vee \neg x_{1,2,{\color{red} n}}) \wedge
+		% … Ende der zweiten Zelle 
+		\\ & \dots \\
+		& \wedge (\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 2}}) \wedge (\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n-1}}) \wedge (\neg x_{1,n-1,{\color{red} 1}} \vee \neg x_{1,n-1,{\color{red} n}}) \wedge
 		% … Ende der vorletzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n-1}})
-		\wedge
-		(\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 2}}) 
+		\wedge (\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n-1}}) \wedge (\neg x_{1,n,{\color{red} 1}} \vee \neg x_{1,n,{\color{red} n}}) \\
 		% … Ende der letzten Zelle 
 		% … Ende der ersten Zeile
-		\\
-		\wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n}})
+		& \wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 2}}) \wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n-1}}) \wedge (\neg x_{2,1,{\color{red} 1}} \vee \neg x_{2,1,{\color{red} n}}) \wedge 
 		% … Ende der zweiten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n-1}})
-		\wedge
-		(\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 2}}) \wedge (\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n-1}}) \wedge (\neg x_{2,2,{\color{red} 1}} \vee \neg x_{2,2,{\color{red} n}}) \wedge
 		% … Ende der vorletzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 2}}) \wedge (\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} 3}}) \wedge
+		\\ & \dots \\
+		& \wedge (\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n-1}}) \wedge (\neg x_{2,n-1,{\color{red} 1}} \vee \neg x_{2,n-1,{\color{red} n}}) \wedge 
 		% … Ende der letzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n-1}})
-		\wedge
-		(\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 2}}) \wedge (\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n-1}}) \wedge (\neg x_{2,n,{\color{red} 1}} \vee \neg x_{2,n,{\color{red} n}}) \\
 		% … Ende der letzten Zelle 
 		% … Ende der zweiten Zeile
-		\\
-		\wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n}})
+		& \wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 2}}) \wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n-1}}) \wedge (\neg x_{n-1,1,{\color{red} 1}} \vee \neg x_{n-1,1,{\color{red} n}}) \wedge
 		% … Ende der zweiten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 2}}) \wedge (\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n-1}}) \wedge (\neg x_{n-1,2,{\color{red} 1}} \vee \neg x_{n-1,2,{\color{red} n}}) \wedge
 		% … Ende der vorletzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 2}}) \wedge (\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n-1}}) \wedge (\neg x_{n-1,n-1,{\color{red} 1}} \vee \neg x_{n-1,n-1,{\color{red} n}}) \wedge
 		% … Ende der letzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 2}}) \wedge (\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n-1}})
+		\wedge (\neg x_{n-1,n,{\color{red} 1}} \vee \neg x_{n-1,n,{\color{red} n}}) \\
 		% … Ende der letzten Zelle 
 		% … Ende der zweiten Zeile
-		\\
-		\wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n}})
+		& \wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 2}}) \wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n-1}}) \wedge (\neg x_{n,1,{\color{red} 1}} \vee \neg x_{n,1,{\color{red} n}}) \wedge
 		% … Ende der zweiten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 2}}) \wedge (\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n-1}}) \wedge (\neg x_{n,2,{\color{red} 1}} \vee \neg x_{n,2,{\color{red} n}}) \wedge
 		% … Ende der vorletzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 2}}) \wedge (\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} 3}}) \wedge
+		\\ & \dots \\
+		& \wedge (\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n-1}}) \wedge (\neg x_{n,n-1,{\color{red} 1}} \vee \neg x_{n,n-1,{\color{red} n}}) \wedge
 		% … Ende der letzten Zelle
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 2}}) 
-		\wedge 
-		(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 3}})
-		\wedge \dots \\
-		\wedge
-		(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n-1}})
-		\wedge
-		(\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n}})
+		\\ & \dots \\
+		& \wedge (\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 2}}) \wedge (\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} 3}}) \wedge 
+		\\ & \dots \\
+		& \wedge (\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n-1}}) \wedge (\neg x_{n,n,{\color{red} 1}} \vee \neg x_{n,n,{\color{red} n}})
 	\end{align*}
 	\bigskip
 		
 	\subsection{Jede Zahl von 1 bis n muss mindestens einmal pro Spalte vorkommen.}
 	\begin{align*}
 		\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
-		x_{{\color{red} i},j,k} = (x_{{\color{red}1},1,1} \vee \dots \vee x_{{\color{red} n},1,1})
-		\wedge (x_{{\color{red} 1},1,2} \vee \dots \vee x_{{\color{red} n},1,2})
-		\wedge \dots \\
-		\wedge (x_{{\color{red}1},1,n-1} \vee \dots \vee x_{{\color{red} n},1,n-1})
-		\wedge (x_{{\color{red} 1},1,n} \vee \dots \vee x_{{\color{red} n},1,n}) \\
+		x_{{\color{red} i},j,k} &= (x_{{\color{red}1},1,1} \vee \dots \vee x_{{\color{red} n},1,1}) \wedge (x_{{\color{red} 1},1,2} \vee \dots \vee x_{{\color{red} n},1,2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{{\color{red}1},1,n-1} \vee \dots \vee x_{{\color{red} n},1,n-1}) \wedge (x_{{\color{red} 1},1,n} \vee \dots \vee x_{{\color{red} n},1,n}) \\
 		% … Ende der ersten Spalte
-		\wedge (x_{{\color{red}1},2,1} \vee \dots \vee x_{{\color{red} n},2,1})
-		\wedge (x_{{\color{red} 1},2,2} \vee \dots \vee x_{{\color{red} n},2,2})
-		\wedge \dots \\
-		\wedge (x_{{\color{red}1},2,n-1} \vee \dots \vee x_{{\color{red} n},2,n-1})
-		\wedge (x_{{\color{red} 1},2,n} \vee \dots \vee x_{{\color{red} n},2,n})
-		\\ \wedge \dots \\
+		& \wedge (x_{{\color{red}1},2,1} \vee \dots \vee x_{{\color{red} n},2,1}) \wedge (x_{{\color{red} 1},2,2} \vee \dots \vee x_{{\color{red} n},2,2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{{\color{red}1},2,n-1} \vee \dots \vee x_{{\color{red} n},2,n-1})
+		\wedge (x_{{\color{red} 1},2,n} \vee \dots \vee x_{{\color{red} n},2,n}) \wedge 
+		\\ & \dots \\
 		% … Ende der zweiten Spalte
-		\wedge (x_{{\color{red}1},n-1,1} \vee \dots \vee x_{{\color{red} n},n-1,1})
-		\wedge (x_{{\color{red} 1},n-1,2} \vee \dots \vee x_{{\color{red} n},n-1,2})
-		\wedge \dots \\
-		\wedge (x_{{\color{red}1},n-1,n-1} \vee \dots \vee x_{{\color{red} n},n-1,n-1})
-		\wedge (x_{{\color{red} 1},n-1,n} \vee \dots \vee x_{{\color{red} n},n-1,n}) \\
+		& \wedge (x_{{\color{red}1},n-1,1} \vee \dots \vee x_{{\color{red} n},n-1,1})
+		\wedge (x_{{\color{red} 1},n-1,2} \vee \dots \vee x_{{\color{red} n},n-1,2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{{\color{red}1},n-1,n-1} \vee \dots \vee x_{{\color{red} n},n-1,n-1}) \wedge (x_{{\color{red} 1},n-1,n} \vee \dots \vee x_{{\color{red} n},n-1,n}) \\
 		% … Ende der dritten Spalte
-		\wedge (x_{{\color{red}1},n,1} \vee \dots \vee x_{{\color{red} n},n,1})
-		\wedge (x_{{\color{red} 1},n,2} \vee \dots \vee x_{{\color{red} n},n,2})
-		\wedge \dots \\
-		\wedge (x_{{\color{red}1},n,n-1} \vee \dots \vee x_{{\color{red} n},n,n-1})
-		\wedge (x_{{\color{red} 1},n,n} \vee \dots \vee x_{{\color{red} n},n,n})
+		& \wedge (x_{{\color{red}1},n,1} \vee \dots \vee x_{{\color{red} n},n,1}) \wedge (x_{{\color{red} 1},n,2} \vee \dots \vee x_{{\color{red} n},n,2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{{\color{red}1},n,n-1} \vee \dots \vee x_{{\color{red} n},n,n-1}) \wedge (x_{{\color{red} 1},n,n} \vee \dots \vee x_{{\color{red} n},n,n})
 	\end{align*}
 	\bigskip
 	
 	\subsection{Jede Zahl von 1 bis n muss mindestens einmal pro Zeile vorkommen.}
 	\begin{align*}
 		\bigwedge_{\atop i=1}^n \bigwedge_{\atop j=1}^n \bigvee_{\atop k=1}^n
-		x_{i,{\color{red} j},k} = (x_{1,{\color{red}1},1} \vee \dots \vee x_{1,{\color{red} n},1})
-		\wedge (x_{1,{\color{red} 1},2} \vee \dots \vee x_{1,{\color{red} n},2})
-		\wedge \dots \\
-		\wedge (x_{1,{\color{red}1},n-1} \vee \dots \vee x_{1,{\color{red} n},n-1})
-		\wedge (x_{1,{\color{red} 1},1,n} \vee \dots \vee x_{1,{\color{red} n},n}) \\
+		x_{i,{\color{red} j},k} &= (x_{1,{\color{red}1},1} \vee \dots \vee x_{1,{\color{red} n},1}) \wedge (x_{1,{\color{red} 1},2} \vee \dots \vee x_{1,{\color{red} n},2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{1,{\color{red}1},n-1} \vee \dots \vee x_{1,{\color{red} n},n-1}) \wedge (x_{1,{\color{red} 1},1,n} \vee \dots \vee x_{1,{\color{red} n},n}) \\
 		% … Ende der ersten Spalte
-		\wedge (x_{2,{\color{red}1},1} \vee \dots \vee x_{2,{\color{red} n},1})
-		\wedge (x_{2,{\color{red} 1},2} \vee \dots \vee x_{2,{\color{red} n},2})
-		\wedge \dots \\
-		\wedge (x_{2,{\color{red}1},n-1} \vee \dots \vee x_{2,{\color{red} n},n-1})
-		\wedge (x_{2,{\color{red} 1},n} \vee \dots \vee x_{2,{\color{red} n},n})
-		\\ \wedge \dots \\
+		& \wedge (x_{2,{\color{red}1},1} \vee \dots \vee x_{2,{\color{red} n},1}) \wedge (x_{2,{\color{red} 1},2} \vee \dots \vee x_{2,{\color{red} n},2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{2,{\color{red}1},n-1} \vee \dots \vee x_{2,{\color{red} n},n-1})
+		\wedge (x_{2,{\color{red} 1},n} \vee \dots \vee x_{2,{\color{red} n},n}) \wedge 
+		\\ & \dots \\
 		% … Ende der zweiten Spalte
-		\wedge (x_{n-1,{\color{red}1},1} \vee \dots \vee x_{n-1,{\color{red} n},1})
-		\wedge (x_{n-1,{\color{red} 1},2} \vee \dots \vee x_{n-1,{\color{red} n},2})
-		\wedge \dots \\
-		\wedge (x_{n-1,{\color{red}1},n-1} \vee \dots \vee x_{n-1,{\color{red} n},n-1})
-		\wedge (x_{n-1,{\color{red} 1},n} \vee \dots \vee x_{n-1,{\color{red} n},n}) \\
+		& \wedge (x_{n-1,{\color{red}1},1} \vee \dots \vee x_{n-1,{\color{red} n},1}) \wedge (x_{n-1,{\color{red} 1},2} \vee \dots \vee x_{n-1,{\color{red} n},2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{n-1,{\color{red}1},n-1} \vee \dots \vee x_{n-1,{\color{red} n},n-1}) \wedge (x_{n-1,{\color{red} 1},n} \vee \dots \vee x_{n-1,{\color{red} n},n}) \\
 		% … Ende der dritten Spalte
-		\wedge (x_{n,{\color{red}1},1} \vee \dots \vee x_{n,{\color{red} n},1})
-		\wedge (x_{n,{\color{red} 1},2} \vee \dots \vee x_{n,{\color{red} n},2})
-		\wedge \dots \\
-		\wedge (x_{n,{\color{red}1},n-1} \vee \dots \vee x_{n,{\color{red} n},n-1})
-		\wedge (x_{n,{\color{red} 1},n} \vee \dots \vee x_{n,{\color{red} n},n})
+		& \wedge (x_{n,{\color{red}1},1} \vee \dots \vee x_{n,{\color{red} n},1}) \wedge (x_{n,{\color{red} 1},2} \vee \dots \vee x_{n,{\color{red} n},2}) \wedge 
+		\\ & \dots \\
+		& \wedge (x_{n,{\color{red}1},n-1} \vee \dots \vee x_{n,{\color{red} n},n-1}) \wedge (x_{n,{\color{red} 1},n} \vee \dots \vee x_{n,{\color{red} n},n})
 	\end{align*}
 	\bigskip
 		
@@ -312,15 +204,36 @@
 	\textit{Diese Regel wird allerdings von Regel Nr. 3 und Nr. 4 abgedeckt, daher entfällt Regel Nr. 5}
 	\bigskip
 	
-	% \subsection{An den Rändern werden Zahlen von 1 bis n angegeben. Man startet hierbei an dem Eckpunkt (x,y) = (0,0).}
-	\subsection{An den Rändern werden Zahlen von 1 bis n angegeben. Man startet hierbei an dem Eckpunkt (i,j) mit $\boldsymbol{i,j \in \{0, n+1\}}$.}
-	
+	\subsection{An den Rändern werden Zahlen von 1 bis n angegeben. Diese Zahlen bestimmen die Anordnung der Zahlen, dabei können die Ränder können dabei auch leer sein.}
 
-	…
+		\begin{align*}
+			\bigwedge_{\atop i=0}^{n+1} \bigwedge_{\atop j=0}^{n+1} \bigwedge_{\atop k=1}^{n}
+			x_{i,j,{\color{red} k}} = 
+			(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 2}})
+		\end{align*}
+		
 	
 	\subsection{Die Zahlen an den Rändern verdeutlichen die Anzahl der zusehenden bzw. die Höhe der Häuser, wenn man in die jeweilige Zeile oder Spalte hingucken würde.}
 	
-	…
+	\begin{align*}
+		\bigwedge_{\atop i=0}^{n+1} \bigwedge_{\atop j=0}^{n+1} \bigwedge_{\atop k=1}^{n}
+		x_{i,j,{\color{red} k}} = 
+		(\neg x_{1,1,{\color{red} 1}} \vee \neg x_{1,1,{\color{red} 2}})
+	\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 %	\begin{align*}
 %	\int_S f \mathrm{d} A &= \sum_{i=1}^n \int_{V_i} f \mathrm{d} A \\
@@ -351,20 +264,20 @@
 %		\mc{1}{c}{1} & \mc{1}{c}{2} & \mc{1}{c}{3} & \mc{1}{c}{4} \\
 %	\end{tabular}
 	
-	%	\begin{tikzpicture}[draw=black, ultra thick, x=\Size,y=\Size]
-	%		\foreach \row/\rowLetter/\MinNumber/\MaxNumber in \Sequence{%
-	%			\foreach \col/\colLetter/\MinNumber/\MaxNumber in \Sequence {%
-	%				\pgfmathtruncatemacro{\value}{\col+\NumOfColumns*(\row-1)}
-	%				\def\NodeText{\pgfmathparse{random(\MinNumber,\MaxNumber)}\pgfmathresult}
-	%				\pgfmathsetmacro{\ColRowProduce}{\col*\row}
-	%				\IfEq{\ColRowProduce}{9}{% If is center square
-	%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\small Free Space};
-	%				}{
-	%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\text \NodeText};
-	%				}
-	%			}
-	%		}
-	%	\end{tikzpicture}
+%	\begin{tikzpicture}[draw=black, ultra thick, x=\Size,y=\Size]
+%		\foreach \row/\rowLetter/\MinNumber/\MaxNumber in \Sequence{%
+%			\foreach \col/\colLetter/\MinNumber/\MaxNumber in \Sequence {%
+%				\pgfmathtruncatemacro{\value}{\col+\NumOfColumns*(\row-1)}
+%				\def\NodeText{\pgfmathparse{random(\MinNumber,\MaxNumber)}\pgfmathresult}
+%				\pgfmathsetmacro{\ColRowProduce}{\col*\row}
+%				\IfEq{\ColRowProduce}{9}{% If is center square
+%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\small Free Space};
+%				}{
+%					\node [Square] at ($(\col,-\row)-(0.5,0.5)$) {\text \NodeText};
+%				}
+%			}
+%		}
+%	\end{tikzpicture}
 	
 	
 \end{document}
